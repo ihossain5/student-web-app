@@ -37,11 +37,13 @@ class AdminController extends Controller {
     public function update(Request $request, $id) {
         $updateStudent = User::findOrFail($id);
         $this->validate($request, [
-            'name'  => 'required',
-            'email' => 'required|string|email|max:255' . $id,
-            'phone' => 'required',
+            'name'     => 'required',
+            'email'    => 'required|string|email|max:255' . $id,
+            'phone'    => 'required',
+            'password' => 'required',
         ]);
-        $data = $request->all();
+        $data             = $request->all();
+        $data['password'] = bcrypt($request->password);
         $updateStudent->update($data);
 
         return response()->json($updateStudent);

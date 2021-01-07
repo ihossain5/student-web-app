@@ -124,6 +124,7 @@ $("#studentEditForm").submit(function(e) {
     let name = $("#edit_name").val();
     let email = $("#edit_email").val();
     let phone = $("#edit_phone").val();
+    let password = $("#edit_password").val();
     let _token = $("input[name=_token]").val();
 
     if (
@@ -139,6 +140,7 @@ $("#studentEditForm").submit(function(e) {
                 name: name,
                 email: email,
                 phone: phone,
+                password: password,
                 _token: _token
             },
             success: function(response) {
